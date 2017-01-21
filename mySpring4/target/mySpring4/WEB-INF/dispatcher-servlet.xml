@@ -1,0 +1,27 @@
+<!--
+Конфигурационный файл Spring IoC контейнера. Его можно использовать для создания bean-ов
+и конфигурирования ими других bean-ов.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        Этим тегом мы указали spring IoC контейнеру где искать (в каком пакете) bean-ы для добавления в IoC контейнер.
+        Spring ищет классы, которые отмечены аннотациями @Controller, @Service, @Repository, @Component.
+     -->
+    <context:component-scan base-package="ru.itsphere.springmvchelloworld"/>
+
+    <!--
+        Создаем bean, который позволяет нам не полностью указывать пути и расширение JSP страниц.
+        Он используется в методах контроллеров.
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

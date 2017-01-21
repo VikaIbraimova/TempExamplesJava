@@ -1,0 +1,29 @@
+<!--
+Этот файл используется для запуска проекта на сервере. Нужен даже без использования Spring MVC.
+-->
+<web-app version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+<display-name>Spring MVC Application</display-name>
+
+<!--
+    DispatcherServlet - главный сервлет фреймворка Spring MVC.
+    Он перехватывает все запросы к этому приложению и затем перенаправляет их контроллерам.
+-->
+<servlet>
+  <servlet-name>mvc-dispatcher</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+
+<!--
+    Явно указать какие запросы должны быть обработаны DispatcherServlet-ом.
+    Работает также как и @RequestMapping("/") только намного раньше.
+-->
+<servlet-mapping>
+  <servlet-name>mvc-dispatcher</servlet-name>
+  <url-pattern>/</url-pattern>
+</servlet-mapping>
+</web-app>
