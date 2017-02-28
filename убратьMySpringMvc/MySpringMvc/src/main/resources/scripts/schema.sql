@@ -1,0 +1,33 @@
+CREATE TABLE worker (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    fio VARCHAR(255) NOT NULL,
+    UNIQUE UQ_FIO_1 (fio),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE autosalon (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    address VARCHAR(255) NOT NULL,
+    worker_id INT UNSIGNED,
+    PRIMARY KEY (id),
+    FOREIGN KEY (worker_id) REFERENCES worker (id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE autos (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE autosalon_auto (
+    autosalon_id INT UNSIGNED NOT NULL,
+    auto_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (autosalon_id) REFERENCES autosalon (id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (auto_id) REFERENCES autos (id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);

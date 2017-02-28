@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- Appenders -->
+    <appender address="console" class="org.apache.log4j.ConsoleAppender">
+        <param address="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param address="ConversionPattern" value="%-5p: %c - %m%n" />
+        </layout>
+    </appender>
+
+    <!-- Application Loggers -->
+    <logger address="com.devblogs.mvc">
+        <level value="info" />
+    </logger>
+
+    <!-- 3rdparty Loggers -->
+    <logger address="org.springframework.core">
+        <level value="info" />
+    </logger>
+
+    <logger address="org.springframework.beans">
+        <level value="info" />
+    </logger>
+
+    <logger address="org.springframework.context">
+        <level value="info" />
+    </logger>
+
+    <logger address="org.springframework.web">
+        <level value="info" />
+    </logger>
+
+    <!-- Root Logger -->
+    <root>
+        <priority value="warn" />
+        <appender-ref ref="console" />
+    </root>
+
+</log4j:configuration>
